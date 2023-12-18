@@ -1,0 +1,18 @@
+[submodule "modules/caribouPopGrowthModel"]
+	path = modules/caribouPopGrowthModel
+	url = git@github.com:tati-micheletti/caribouPopGrowthModel.git
+[submodule "modules/anthroDisturbance_DataPrep"]
+	path = modules/anthroDisturbance_DataPrep
+	url = git@github.com:tati-micheletti/anthroDisturbance_DataPrep.git
+[submodule "modules/disturbanceGenerator_NT"]
+	path = modules/disturbanceGenerator_NT
+	url = git@github.com:tati-micheletti/disturbanceGenerator_NT.git
+[submodule "modules/anthroDisturbance_Generator"]
+	path = modules/anthroDisturbance_Generator
+	url = git@github.com:tati-micheletti/anthroDisturbance_Generator.git
+[submodule "modules/caribouPopGrowth_disturbance"]
+	path = modules/caribouPopGrowth_disturbance
+	url = git@github.com:tati-micheletti/caribouPopGrowth_disturbance.git
+[submodule "modules/getReadySimulationFiles"]
+	path = modules/getReadySimulationFiles
+	url = git@github.com:tati-micheletti/getReadySimulationFiles.git
