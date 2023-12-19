@@ -8,8 +8,9 @@ studyAreaGenerator <- function(url = NULL, destPath = NULL, Crs = NULL,
   if (is.null(destPath))
     destPath <- tempdir()
   if (is.null(Crs))
-    Crs <- "PROJCRS[\"unknown\",\n    BASEGEOGCRS[\"unknown\",\n        DATUM[\"Unknown_based_on_GRS80_ellipsoid\",\n            ELLIPSOID[\"GRS 1980\",6378137,298.257222101004,\n                LENGTHUNIT[\"metre\",1],\n                ID[\"EPSG\",7019]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]]],\n    CONVERSION[\"Lambert Conic Conformal (2SP)\",\n        METHOD[\"Lambert Conic Conformal (2SP)\",\n            ID[\"EPSG\",9802]],\n        PARAMETER[\"Latitude of false origin\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8821]],\n        PARAMETER[\"Longitude of false origin\",-95,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8822]],\n        PARAMETER[\"Latitude of 1st standard parallel\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8823]],\n        PARAMETER[\"Latitude of 2nd standard parallel\",77,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8824]],\n        PARAMETER[\"Easting at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8826]],\n        PARAMETER[\"Northing at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8827]]],\n    CS[Cartesian,2],\n        AXIS[\"easting\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]],\n        AXIS[\"northing\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]]]"
-  studyArea <- reproducible::prepInputs(url = url,
+    # Crs <- "PROJCRS[\"unknown\",\n    BASEGEOGCRS[\"unknown\",\n        DATUM[\"Unknown_based_on_GRS80_ellipsoid\",\n            ELLIPSOID[\"GRS 1980\",6378137,298.257222101004,\n                LENGTHUNIT[\"metre\",1],\n                ID[\"EPSG\",7019]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433,\n                ID[\"EPSG\",9122]]]],\n    CONVERSION[\"Lambert Conic Conformal (2SP)\",\n        METHOD[\"Lambert Conic Conformal (2SP)\",\n            ID[\"EPSG\",9802]],\n        PARAMETER[\"Latitude of false origin\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8821]],\n        PARAMETER[\"Longitude of false origin\",-95,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8822]],\n        PARAMETER[\"Latitude of 1st standard parallel\",49,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8823]],\n        PARAMETER[\"Latitude of 2nd standard parallel\",77,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8824]],\n        PARAMETER[\"Easting at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8826]],\n        PARAMETER[\"Northing at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8827]]],\n    CS[Cartesian,2],\n        AXIS[\"easting\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]],\n        AXIS[\"northing\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1,\n                ID[\"EPSG\",9001]]]]"
+    Crs <- "PROJCRS[\"Canada_Albers_Equal_Area_Conic\",\n    BASEGEOGCRS[\"NAD83\",\n        DATUM[\"North American Datum 1983\",\n            ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1]]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"Degree\",0.0174532925199433]]],\n    CONVERSION[\"Canada_Albers_Equal_Area_Conic\",\n        METHOD[\"Albers Equal Area\",\n            ID[\"EPSG\",9822]],\n        PARAMETER[\"Latitude of false origin\",40,\n            ANGLEUNIT[\"Degree\",0.0174532925199433],\n            ID[\"EPSG\",8821]],\n        PARAMETER[\"Longitude of false origin\",-96,\n            ANGLEUNIT[\"Degree\",0.0174532925199433],\n            ID[\"EPSG\",8822]],\n        PARAMETER[\"Latitude of 1st standard parallel\",50,\n            ANGLEUNIT[\"Degree\",0.0174532925199433],\n            ID[\"EPSG\",8823]],\n        PARAMETER[\"Latitude of 2nd standard parallel\",70,\n            ANGLEUNIT[\"Degree\",0.0174532925199433],\n            ID[\"EPSG\",8824]],\n        PARAMETER[\"Easting at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8826]],\n        PARAMETER[\"Northing at false origin\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8827]]],\n    CS[Cartesian,2],\n        AXIS[\"(E)\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1]],\n        AXIS[\"(N)\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1]],\n    USAGE[\n        SCOPE[\"Not known.\"],\n        AREA[\"Canada - onshore and offshore - Alberta; British Columbia; Manitoba; New Brunswick; Newfoundland and Labrador; Northwest Territories; Nova Scotia; Nunavut; Ontario; Prince Edward Island; Quebec; Saskatchewan; Yukon.\"],\n        BBOX[38.21,-141.01,86.46,-40.73]],\n    ID[\"ESRI\",102001]]"
+    studyArea <- reproducible::prepInputs(url = url,
                                         archive = archive, 
                                         targetFile = targetFile,
                                         destinationPath = destPath,
@@ -24,16 +25,18 @@ studyAreaGenerator <- function(url = NULL, destPath = NULL, Crs = NULL,
   }
   return(studyArea)
 }
+
 rtmGenerator <- function(url = NULL, destPath = NULL, 
                          Crs = NULL, sA = NULL, tags = NULL,
-                         large = FALSE){
+                         large = FALSE, useSAcrs = FALSE){
   if (is.null(url)) # NWT raster to match
     url <- "https://drive.google.com/file/d/11yCDc2_Wia2iw_kz0f0jOXrLpL8of2oM"
   if (is.null(destPath))
     destPath <- tempdir()
     RTM <- reproducible::prepInputs(url = url,
                                   destinationPath = destPath,
-                                  studyArea = sA,
+                                  studyArea = sA, 
+                                  useSAcrs = useSAcrs,
                                   fun = "terra::rast",
                                   userTags = c("objectName:RTM", tags))
   if (large){
@@ -51,19 +54,42 @@ rtmGenerator <- function(url = NULL, destPath = NULL,
   message(crayon::green(paste0("RTM", ifelse(large, " large", ""), " sucessfully created!")))
   return(RTM)
 }
-sppEquiv_CA <- function(runName){
-  data("sppEquivalencies_CA", package = "LandR")
-  sppEquivCol <- runName
+
+makeListSACaribou <- function(studyArea){
   
-  # Make NWT spp equivalencies
-  sppEquivalencies_CA[, paste0(runName) := c(Betu_Pap = "Betu_Pap",
-                                             Lari_Lar = "Lari_Lar",
-                                             Pice_Gla = "Pice_Gla",
-                                             Pice_Mar = "Pice_Mar",
-                                             Pinu_Ban = "Pinu_Ban",
-                                             Popu_Tre = "Popu_Tre")[Boreal]]
+  # Create needed objects
   
-  sppEquivalencies_CA <- sppEquivalencies_CA[!is.na(get(runName))]
-  sppEquivalencies_CA$EN_generic_short <- sppEquivalencies_CA[[paste0(runName)]]
-  return(sppEquivalencies_CA)
+  Boreal_Caribou_Revised_Study_Areas_2020 <- "https://drive.google.com/file/d/1FNQKCjKhZIsr5rzWGfTvJ74K2KexN3um"
+  BIO_ENR_WFE_BorealCaribou_RangePlanRegions_2020 <- "https://drive.google.com/file/d/1x_fQEKHW2nGbqo1JvCpDwmVuTPYAavl3"
+  BIO_ENR_WFE_BorealCaribou_GNWT_NT1_range_2020 <- "https://drive.google.com/file/d/1VRSolnXMYPrkdBhNofeR81dCu_NTBSgf"
+  Masterfile_meta_042908_ACCNAd83_ <- "https://drive.google.com/file/d/1byKv69wjoISWNMDsemzQacGln7kGWqyq"
+  
+  sa1 <- reproducible::prepInputs(url = Boreal_Caribou_Revised_Study_Areas_2020,
+                    destinationPath = paths[["inputPath"]],
+                    targetFile = "Boreal_Caribou_Revised_Study_Areas_2020.shp",
+                    studyArea = studyArea,
+                    fun = "terra::vect")
+  sa2 <- reproducible::prepInputs(url = BIO_ENR_WFE_BorealCaribou_RangePlanRegions_2020,
+                    destinationPath = paths[["inputPath"]],
+                    targetFile = "BIO_ENR_WFE_BorealCaribou_RangePlanRegions_2020.shp",
+                    studyArea = studyArea,
+                    fun = "terra::vect")
+  sa3 <- reproducible::prepInputs(url = BIO_ENR_WFE_BorealCaribou_GNWT_NT1_range_2020,
+                    destinationPath = paths[["inputPath"]],
+                    targetFile = "BIO_ENR_WFE_BorealCaribou_GNWT_NT1_range_2020.shp",
+                    studyArea = studyArea,
+                    fun = "terra::vect")
+  sa4 <- reproducible::prepInputs(url = Masterfile_meta_042908_ACCNAd83_,
+                    destinationPath = paths[["inputPath"]],
+                    targetFile = "Masterfile_meta_042908_ACCNAd83_.shp",
+                    # studyArea = studyArea, # Not reprojecting. Weird.
+                    fun = "terra::vect")
+
+  sa4 <- terra::subset(sa4, sa4[["PROV_TERR"]] == "NWT")
+  sa4 <- terra::project(x = sa4, terra::crs(studyArea)) 
+  listSACaribou <- c(sa1, sa2, sa3, sa4)
+  names(listSACaribou) <- c("Revised_Study_Areas", "RangePlanRegions", "GNWT_NT1", "Herds_NT")
+  return(listSACaribou)
 }
+
+
