@@ -1,7 +1,6 @@
 # History files
 .Rhistory
 .Rapp.history
-
 # Session Data files
 .RData
 .RDataTmp
@@ -36,3 +35,4 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 # modules/* # >>> is this correct here? Commented out to add submodules
+.secrets
