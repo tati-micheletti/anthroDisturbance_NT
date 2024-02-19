@@ -17,3 +17,6 @@
 	path = modules/getReadySimulationFiles
 	url = git@github.com:tati-micheletti/getReadySimulationFiles.git
 
+[submodule "modules/potentialResourcesNT_DataPrep"]
+	path = modules/potentialResourcesNT_DataPrep
+	url = git@github.com:tati-micheletti/potentialResourcesNT_DataPrep.git
