@@ -1,12 +1,3 @@
-# getOrUpdatePkg <- function(p, minVer, repo) {
-#   if (!isFALSE(try(packageVersion(p) < minVer, silent = TRUE) )) {
-#     if (missing(repo)) repo = c("predictiveecology.r-universe.dev", getOption("repos"))
-#     install.packages(p, repos = repo)
-#   }
-# }
-
-# getOrUpdatePkg("Require", "0.3.1.9015")
-# getOrUpdatePkg("SpaDES.project", "0.0.8.9027")
 
 ################### RUNAME
 
