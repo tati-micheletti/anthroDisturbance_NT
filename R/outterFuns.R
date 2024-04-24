@@ -1,3 +1,5 @@
+Require::Require("terra")
+
 if (SpaDES.project::user("tmichele")) terra::terraOptions(tempdir = "~/scratch/terra")
 
 herdsStudyArea <- function(destPath){
