@@ -67,7 +67,7 @@ rtmGenerator <- function(url = NULL, destPath = NULL,
   }
   message(crayon::green(paste0("RTM", ifelse(large, " large", ""), " sucessfully created!")))
   if (interactive())
-    terra::plot(RTM); terra::plot(studyArea, add = TRUE, border = "red")
+    terra::plot(RTM); terra::plot(sA, add = TRUE, border = "red")
   return(RTM)
 }
 
