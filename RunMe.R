@@ -24,7 +24,7 @@ terra::terraOptions(tempdir = "~/scratch/terra")
 shortProvinceName = "NT"
 climateScenario <- "CanESM5_SSP370"
 replicateRun <- "run01" # run02, run03, run04, run05
-dist <- 0.2 # 0.4, 0.6
+dist <- 0.1 # 0.4, 0.6
 distMod <- if (is(dist, "numeric")) dist else NULL
 popQuant <- c(0, 0.1) # c(0.9, 1)
 disturbanceScenario <- paste0(dist, "_NT1")
@@ -93,6 +93,7 @@ out <- SpaDES.project::setupProject(
                                                    saveInitialDisturbances = TRUE,
                                                    seismicLineGrids = 500,
                                                    growthStepEnlargingLines = 20,
+                                                   useRoadsPackage = TRUE,
                                                    growthStepEnlargingPolys = 0.3),
                 caribouPopGrowth_disturbance = list(overwriteDisturbanceLayer = FALSE,
                                                     disturbancesFolder = paths[["outputPath"]],

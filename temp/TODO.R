@@ -1,5 +1,13 @@
 # TODO
+
+# NEXT RELEASE
+# [ ] NEWS - have diffs ready
+# [ ] Versioning Rmd and Module
+# [ ] Date on Rmd
+# [ ] Render PDF
+ 
 # [ ] Implement usage of roads' map: stage set
+# [ ] Description of the DEM input
 # [ ] Run replicates (up to 27 would be generally ok!)
 # 0.2 Scenarios
     # [ ] BAU 1 

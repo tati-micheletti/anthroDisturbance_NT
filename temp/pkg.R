@@ -12,10 +12,7 @@ devtools::install_github(repo = "PredictiveEcology/SpaDES.project",
 remove.packages("reproducible")
 remove.packages("reproducible", lib = "/home/tmichele/.local/share/R/anthroDisturbance_NT/packages/x86_64-pc-linux-gnu/4.3/")
 devtools::install_github(repo = "PredictiveEcology/reproducible", 
-                         ref = "40db863a4af6c6e0066d8afdddc87aff60092507", #ModsForLargeArchives
-                         type = "source")
-devtools::install_github(repo = "PredictiveEcology/reproducible", 
-                         ref = "40db863a4af6c6e0066d8afdddc87aff60092507", #ModsForLargeArchives
+                         ref = "b6b6490",
                          lib = "/home/tmichele/.local/share/R/anthroDisturbance_NT/packages/x86_64-pc-linux-gnu/4.3/", 
                          type = "source", force = TRUE)
 
@@ -23,12 +20,10 @@ devtools::install_github(repo = "PredictiveEcology/reproducible",
 remove.packages("SpaDES.core")
 remove.packages("SpaDES.core", lib = "/home/tmichele/.local/share/R/anthroDisturbance_NT/packages/x86_64-pc-linux-gnu/4.3/")
 devtools::install_github(repo = "PredictiveEcology/SpaDES.core", 
-                         ref = "d23196af250d773aec3c29fb7168c7d7edbd142e",#"sequentialCaching", 
-                         type = "source")
-devtools::install_github(repo = "PredictiveEcology/SpaDES.core", 
-                         ref = "d23196af250d773aec3c29fb7168c7d7edbd142e",#"sequentialCaching", 
+                         ref = "development", 
                          lib = "/home/tmichele/.local/share/R/anthroDisturbance_NT/packages/x86_64-pc-linux-gnu/4.3/", 
                          type = "source", force = TRUE)
+
 devtools::install_github("LandSciTech/caribouMetrics", 
                          lib = "/home/tmichele/.local/share/R/anthroDisturbance_NT/packages/x86_64-pc-linux-gnu/4.3/", 
                          type = "source", force = TRUE)
