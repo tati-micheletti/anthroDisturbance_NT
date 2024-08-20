@@ -7,11 +7,10 @@ getOrUpdatePkg <- function(p, minVer = "0") {
   }
 }
 
-getOrUpdatePkg("remotes")
-
-remotes::install_github("PredictiveEcology/Require", ref = "a2c60495228e3a73fa513435290e84854ca51907", upgrade = FALSE)
-
-getOrUpdatePkg("SpaDES.project", "0.0.8.9040")
+getOrUpdatePkg("Require", "0.3.1.9089")
+getOrUpdatePkg("SpaDES.project", "0.1.0.9003")
+getOrUpdatePkg("reproducible", "2.1.1.9002")
+getOrUpdatePkg("SpaDES.core", "2.1.5.9000")
 
 ################### RUNAME
 
@@ -23,8 +22,10 @@ terra::terraOptions(tempdir = "~/scratch/terra")
 
 shortProvinceName = "NT"
 climateScenario <- "CanESM5_SSP370"
-replicateRun <- "run01" # run02, run03, run04, run05
-dist <- 0.1 # 0.4, 0.6
+replicateRun <- "run05" # run02, run03, run04, run05
+# The names of replicates NEED to be as stated above as we download the matching files from GDrive
+# for fire --> MAKE A UNIT TEST FOR IT. Google drive on line getSimulationDataFromGDrive.R#21 will fail!
+dist <- 0.2 # 0.4, 0.6
 distMod <- if (is(dist, "numeric")) dist else NULL
 popQuant <- c(0, 0.1) # c(0.9, 1)
 disturbanceScenario <- paste0(dist, "_NT1")
@@ -39,8 +40,8 @@ out <- SpaDES.project::setupProject(
       "tati-micheletti/getReadySimulationFiles@main",
       "tati-micheletti/anthroDisturbance_DataPrep@main",
       "tati-micheletti/potentialResourcesNT_DataPrep@main",
-      "tati-micheletti/anthroDisturbance_Generator@main",
-      # "tati-micheletti/caribouPopGrowth_disturbance@main",
+      "tati-micheletti/anthroDisturbance_Generator@main"#,
+      # "tati-micheletti/caribouPopGrowth_disturbance@main"#,
       # "tati-micheletti/caribouPopGrowthModel@master"
       ),
   options = list(spades.allowInitDuringSimInit = TRUE,
@@ -50,7 +51,7 @@ out <- SpaDES.project::setupProject(
                  gargle_oauth_client_type = "web", # Without this, google authentication didn't work when running non-interactively!
                  use_oob = FALSE,
                  repos = "https://cloud.r-project.org",
-                 SpaDES.project.fast = TRUE,
+                 SpaDES.project.fast = FALSE,
                  reproducible.gdalwarp = TRUE,
                  reproducible.inputPaths = if (user("tmichele")) "~/data" else NULL,
                  reproducible.destinationPath = if (user("tmichele")) "~/data" else NULL,
@@ -93,10 +94,9 @@ out <- SpaDES.project::setupProject(
                                                    saveInitialDisturbances = TRUE,
                                                    seismicLineGrids = 500,
                                                    growthStepEnlargingLines = 20,
-                                                   useRoadsPackage = TRUE,
                                                    growthStepEnlargingPolys = 0.3),
                 caribouPopGrowth_disturbance = list(overwriteDisturbanceLayer = FALSE,
-                                                    disturbancesFolder = paths[["outputPath"]],
+                                                    disturbancesFolder = file.path(paths[["outputPath"]]),
                                                     .runInterval = 10),
                 caribouPopGrowthModel = list(.runName = runName,
                                              .growthInterval = 10,
@@ -104,19 +104,21 @@ out <- SpaDES.project::setupProject(
                                              climateModel = climateScenario)
                 ),
   packages = c("googledrive", 'RCurl', 'XML', 'igraph', 'qs',
-               "PredictiveEcology/SpaDES.core@sequentialCaching (>= 2.0.3.9002)",
-               "PredictiveEcology/reproducible@modsForLargeArchives (>= 2.0.10.9010)",
-               "PredictiveEcology/Require@development (>= 0.3.1.9015)"),
+               "PredictiveEcology/SpaDES.core@development (>= 2.1.5.9000)",
+               "PredictiveEcology/reproducible@development (>= 2.1.1.9002)",
+               "PredictiveEcology/Require@simplify4 (>= 0.3.1.9089)"),
   useGit = "sub",
   loadOrder = c(
                 "getReadySimulationFiles",
-                "anthroDisturbance_DataPrep", "potentialResourcesNT_DataPrep", "anthroDisturbance_Generator",
-                 "caribouPopGrowth_disturbance", "caribouPopGrowthModel"
+                "anthroDisturbance_DataPrep", "potentialResourcesNT_DataPrep", "anthroDisturbance_Generator"
+                # , "caribouPopGrowth_disturbance", "caribouPopGrowthModel"
                 ),
-  outputs =  data.frame(objectName = c("disturbances",
-                                       "predictedCaribou"),
-                        file = c(paste0("disturbances_Q_", paste(popQuant, collapse = "-"), "_year",times$end,".rds"),
-                                 paste0("predictedCaribou_Q_", paste(popQuant, collapse = "-"), "_year",times$end,".rds")),
+  outputs =  data.frame(objectName = c("disturbances"
+                                       # ,"predictedCaribou"
+                                       ),
+                        file = c(paste0("disturbances_Q_", paste(popQuant, collapse = "-"), "_year",times$end,".rds")
+                                 # ,paste0("predictedCaribou_Q_", paste(popQuant, collapse = "-"), "_year",times$end,".rds")
+                                 ),
                         saveTime = c(rep(times$end, times = 2)))
   )
 
